@@ -1,0 +1,47 @@
+<title>Color Picker</title>
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<div class="container">
+	<div class="page-header">
+		<h1>Color Picker <small>Sending for Arduino</small></h1>
+	</div>
+
+	<form action="#">
+		<center>
+			<div class="form-group">
+				<label for="c1">Color 1:　</label>
+				<input type="color" name="color1" id="c1" value="#dccb18">
+			</div>
+			<div class="form-group">
+				<label for="c2">Color 2:　</label>
+				<input type="color" name="color2" id="c2" value="#83ccd2">
+			</div>
+			<button id="submit_color" class="btn btn-primary btn-lg">Change Color</button>
+			<hr>
+			<img src="{{url_for('static', filename='ajax-loader.gif')}}" id="loader" style="display:none">
+		</center>
+	</form>
+</div>
+<script type="text/javascript">
+ 	$(function(){
+ 		var $loader = $("#loader");
+ 		$('#submit_color').click(function(){
+ 			$loader.show();
+ 			$.post(
+ 				'set_color',
+ 				{
+          			'color1': $('#c1').val(),
+          			'color2': $('#c2').val(),
+        		},
+        		function(data){
+        			$loader.hide();
+        			console.log(data);
+        		}
+ 			);
+ 			return false;
+ 		});
+ 		
+ 	});
+</script>
