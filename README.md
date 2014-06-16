@@ -1,4 +1,4 @@
-# LED Ardiomp
+# LED Arduino
 
 ArduinoにつないだフルカラーLEDをブラウザからいじってみる
 
